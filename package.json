@@ -1,0 +1,23 @@
+{
+  "name": "multi-stage-node-image",
+  "version": "1.0.0",
+  "description": "Demo repo for building a minimal node app image",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theRemix/Multi-Stage-Node-Image.git"
+  },
+  "keywords": [
+    "docker"
+  ],
+  "author": "Jon Borgonia <jon@gomagames.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theRemix/Multi-Stage-Node-Image/issues"
+  },
+  "homepage": "https://github.com/theRemix/Multi-Stage-Node-Image#readme"
+}
