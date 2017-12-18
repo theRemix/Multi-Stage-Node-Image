@@ -4,8 +4,6 @@ Demo repo for building a minimal node app image
 
 See [Dockerfile](./Dockerfile)
 
-and [package.json](./package.json)
-
 ## Building
 
 Building the multi-stage docker image will run the tests, and only complete the build if the tests pass.
