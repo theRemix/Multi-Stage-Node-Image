@@ -1,6 +1,10 @@
 const { createServer } = require('http');
 
 module.exports = createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ data : 'ok' }));
+  const body = JSON.stringify({ data : 'ok' });
+  res.writeHead(200, {
+    'Content-Length': body.length,
+    'Content-Type': 'application/json'
+  });
+  res.end(body);
 });

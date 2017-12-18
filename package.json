@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/theRemix/Multi-Stage-Node-Image/issues"
   },
-  "homepage": "https://github.com/theRemix/Multi-Stage-Node-Image#readme"
+  "homepage": "https://github.com/theRemix/Multi-Stage-Node-Image#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "supertest": "^3.0.0"
+  }
 }
