@@ -30,8 +30,3 @@ workflows:
       - test:
           requires:
             - build_and_test
-          filters:
-            branches:
-              only: master
-            tags:
-              only: /v.*/
