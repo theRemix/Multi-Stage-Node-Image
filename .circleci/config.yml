@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build_and_test:
-    working_directory: ~/app
     docker:
       - image: circleci/node:lts
     steps:
@@ -22,12 +21,18 @@ jobs:
           name: Run Tests
           command: npm test
   deploy_staging:
+    docker:
+      - image: alpine/git
     steps:
+      - checkout
       - run:
           name: Deploy to staging
           command: sh ./circleci/deploy.sh "${CIRCLE_BRANCH}"
   deploy_prod:
+    docker:
+      - image: alpine/git
     steps:
+      - checkout
       - run:
           name: Deploy to production
           command: sh ./circleci/deploy.sh "${CIRCLE_TAG}"
