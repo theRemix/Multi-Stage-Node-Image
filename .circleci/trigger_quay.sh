@@ -7,9 +7,9 @@ fi
 
 REF=""
 if [[ -z "${CIRCLE_TAG}" ]]; then
-  REF=refs/tags/$CIRCLE_TAG
-else
   REF=refs/heads/$CIRCLE_BRANCH
+else
+  REF=refs/tags/$CIRCLE_TAG
 fi
 
 echo "Triggering build for $REF"
