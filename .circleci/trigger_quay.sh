@@ -15,6 +15,6 @@ fi
 echo "Triggering build for $REF"
 
 PAYLOAD="{\"commit\": \"$CIRCLE_SHA1\",\"ref\": \"$REF\",\"default_branch\": \"master\"}"
-curl -H "Content-Type: application/json" --data "$PAYLOAD" -X POST '$TRIGGER_URL' && \
+curl -H "Content-Type: application/json" --data "$PAYLOAD" -X POST $TRIGGER_URL && \
 echo "\nTriggered quay build for $CIRCLE_PROJECT_REPONAME"
 
