@@ -6,18 +6,13 @@ if [[ -z "${TRIGGER_URL}" ]]; then
 fi
 
 REF=""
-if [ "$1" == "master" ]; then
-  REF=refs/heads/master
-else
-  if [[ -z "${CIRCLE_TAG}" ]]; then
-    echo "Missing env CIRCLE_TAG. Something is wrong with Circle config."
-    exit 1
-  fi
-
+if [[ -z "${CIRCLE_TAG}" ]]; then
   REF=refs/tags/$CIRCLE_TAG
+else
+  REF=refs/heads/$CIRCLE_BRANCH
 fi
 
-echo "Deploying $REF"
+echo "Triggering build for $REF"
 
 PAYLOAD="{\"commit\": \"$CIRCLE_SHA1\",\"ref\": \"$REF\",\"default_branch\": \"master\"}"
 curl -H "Content-Type: application/json" --data "$PAYLOAD" -X POST $TRIGGER_URL && \

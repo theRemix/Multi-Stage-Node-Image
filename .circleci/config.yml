@@ -20,36 +20,28 @@ jobs:
       - run:
           name: Run Tests
           command: npm test
-  deploy_staging:
+  trigger_quay:
     docker:
       - image: alpine/git
     steps:
       - checkout
       - run:
-          name: Deploy to staging
-          command: sh .circleci/deploy.sh "${CIRCLE_BRANCH}"
-  deploy_prod:
-    docker:
-      - image: alpine/git
-    steps:
-      - checkout
+          name: Install curl
+          command: |
+            apk update && apk add curl
       - run:
-          name: Deploy to production
-          command: sh .circleci/deploy.sh "${CIRCLE_TAG}"
+          name: Trigger Quay Build
+          command: sh .circleci/trigger_quay.sh
 
 workflows:
   version: 2
-  build_test_deploy:
+  build_test_trigger:
     jobs:
       - build_and_test
-      - deploy_staging:
+      - trigger_quay:
           filters:
             branches:
               only: master
-          requires:
-            - build_and_test
-      - deploy_prod:
-          filters:
             tags:
               only: /^v.*/
           requires:
