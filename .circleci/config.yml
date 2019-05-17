@@ -27,7 +27,7 @@ jobs:
       - checkout
       - run:
           name: Deploy to staging
-          command: sh ./circleci/deploy.sh "${CIRCLE_BRANCH}"
+          command: sh .circleci/deploy.sh "${CIRCLE_BRANCH}"
   deploy_prod:
     docker:
       - image: alpine/git
@@ -35,7 +35,7 @@ jobs:
       - checkout
       - run:
           name: Deploy to production
-          command: sh ./circleci/deploy.sh "${CIRCLE_TAG}"
+          command: sh .circleci/deploy.sh "${CIRCLE_TAG}"
 
 workflows:
   version: 2
