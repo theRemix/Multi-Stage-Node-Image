@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Install curl
           command: |
-            apk update && apk add curl
+            apk update && apk add curl curl-dev
       - run:
           name: Trigger Quay Build
           command: sh .circleci/trigger_quay.sh
